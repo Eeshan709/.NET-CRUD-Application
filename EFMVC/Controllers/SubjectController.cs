@@ -1,34 +1,29 @@
 ﻿using EFMVC.Context;
 using EFMVC.Models;
+using EFMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EFMVC.Controllers
 {
     public class SubjectController : Controller
     {
-        MVCContext db;
+        ISubjectServices iss;
 
-        public SubjectController(MVCContext _db)
+        public SubjectController(ISubjectServices _iss)
         {
-            db = _db;
+            iss = _iss;
         }
         public IActionResult Index()
         {
-            IEnumerable<Subject> subjects = db.Subjects.Select(s => s).ToList();
-            return View(subjects);
+            return View(iss.GetAllSubjects());
         }
 
         public IActionResult Delete(int id)
         {
-            Subject subject = db.Subjects.FirstOrDefault(s => s.SubjectId == id);
-
-            if (subject != null)
-            {
-                db.Remove(subject);
-                db.SaveChanges();
+            
+                iss.DeleteASubject(id);
                 return RedirectToAction("Index");
-            }
-            return View();
+            
         }
     }
 }
