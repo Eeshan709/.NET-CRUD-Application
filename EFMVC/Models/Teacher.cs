@@ -9,5 +9,6 @@ namespace EFMVC.Models
         public string TeacherName { get; set; }
         public string TeacherAddress { get; set; }
         public int TeacherAge { get; set; }
+        public List<Subject> TeacherSubjects { get; set; } = new List<Subject>();
     }
 }

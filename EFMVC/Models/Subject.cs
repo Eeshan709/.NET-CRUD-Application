@@ -10,5 +10,6 @@ namespace EFMVC.Models
         public string SubjectName { get; set; }
         public string SubjectTerm { get; set; }
         public string SubjectCredets { get; set; }
+        public List<Teacher> SubjectTeachers { get; set; } = new List<Teacher>();
     }
 }

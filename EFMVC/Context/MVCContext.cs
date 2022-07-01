@@ -13,5 +13,6 @@ namespace EFMVC.Context
         ///mentioning which entities actually i want to map into database
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Test> Test { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using EFMVC.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFMVC.Migrations
 {
     [DbContext(typeof(MVCContext))]
-    partial class MVCContextModelSnapshot : ModelSnapshot
+    [Migration("20220701061902_test2")]
+    partial class test2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,32 +69,7 @@ namespace EFMVC.Migrations
 
                     b.HasKey("TeacherId");
 
-                    b.ToTable("Teachers");
-                });
-
-            modelBuilder.Entity("EFMVC.Models.Test", b =>
-                {
-                    b.Property<int>("TestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TestId"), 1L, 1);
-
-                    b.Property<string>("TestCredets")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TestName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TestTerm")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TestId");
-
-                    b.ToTable("Test");
+                    b.ToTable("Teacher");
                 });
 
             modelBuilder.Entity("SubjectTeacher", b =>
