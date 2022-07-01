@@ -17,5 +17,18 @@ namespace EFMVC.Controllers
             IEnumerable<Subject> subjects = db.Subjects.Select(s => s).ToList();
             return View(subjects);
         }
+
+        public IActionResult Delete(int id)
+        {
+            Subject subject = db.Subjects.FirstOrDefault(s => s.SubjectId == id);
+
+            if (subject != null)
+            {
+                db.Remove(subject);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
